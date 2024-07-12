@@ -2,9 +2,9 @@ package de.brunokrams.schedulebuilder;
 
 import java.util.Set;
 
-public class Scheduler {
+public class Scheduler<T> {
     
-    public Schedule create(Set<String> participants) {
+    public Schedule<T> create(Set<T> participants) {
         return null;
     }
     

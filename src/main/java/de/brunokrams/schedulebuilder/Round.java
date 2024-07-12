@@ -20,12 +20,12 @@ public class Round<T> {
         if (pairing == null) {
             throw new IllegalArgumentException("The pairing must not be null.");
         }
-        checkIfParticipantAlreadyHasPairing(pairing.firstParticipant());
-        checkIfParticipantAlreadyHasPairing(pairing.secondParticipant());
+        checkIfParticipantAlreadyHasPairing(pairing.getFirstParticipant());
+        checkIfParticipantAlreadyHasPairing(pairing.getSecondParticipant());
         
         pairings.add(pairing);
-        participants.add(pairing.firstParticipant());
-        participants.add(pairing.secondParticipant());
+        participants.add(pairing.getFirstParticipant());
+        participants.add(pairing.getSecondParticipant());
     }
 
     private void checkIfParticipantAlreadyHasPairing(T participant) {

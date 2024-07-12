@@ -12,7 +12,7 @@ public class CommonTestData {
     
     public static final String WEIERSTRASS = "Karl";
     
-    private static final Set<String> PARTICIPANTS = Set.of(GAUSS, RIEMANN, EULER, CANTOR, HILBERT, WEIERSTRASS);
+    public static final Set<String> PARTICIPANTS = Set.of(GAUSS, RIEMANN, EULER, CANTOR, HILBERT, WEIERSTRASS);
 
 
 }

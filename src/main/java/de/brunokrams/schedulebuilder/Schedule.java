@@ -16,6 +16,11 @@ public class Schedule<T> {
     private final List<Round<T>> rounds;
     private final Set<Pairing<T>> pairings;
 
+    public List<Pairing<T>> getPairings(T participant) {
+        return rounds.stream().flatMap(round -> round.getPairings().stream()).filter(pairing -> pairing.contains(participant))
+                .toList();
+    }
+
     List<Round<T>> getRounds() {
         return Collections.unmodifiableList(rounds);
     }
@@ -35,4 +40,5 @@ public class Schedule<T> {
             throw new IllegalArgumentException(pairing + " already is in some Round in this schedule.");
         }
     }
+
 }

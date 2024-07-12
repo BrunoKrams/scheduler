@@ -2,6 +2,8 @@ package de.brunokrams.schedulebuilder;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static de.brunokrams.schedulebuilder.CommonTestData.CANTOR;
 import static de.brunokrams.schedulebuilder.CommonTestData.EULER;
 import static de.brunokrams.schedulebuilder.CommonTestData.GAUSS;
@@ -19,9 +21,10 @@ class ScheduleTest {
         Schedule<String> schedule = new Schedule<>();
 
         // when/then
-        assertThatThrownBy(() -> schedule.add(null)).isInstanceOf(IllegalArgumentException.class).hasMessage("The round must not be null.");
+        assertThatThrownBy(() -> schedule.add(null)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("The round must not be null.");
     }
-    
+
     @Test
     void add_fails_whenAnyPairingOfTheRoundIsAlreadyContainedInAnExistingRound() {
         // given
@@ -31,19 +34,20 @@ class ScheduleTest {
         firstRound.add(pairing);
         firstRound.add(new Pairing<>(RIEMANN, WEIERSTRASS));
         schedule.add(firstRound);
-        
+
         // when/then        
         Round<String> secondRound = new Round<>();
         secondRound.add(new Pairing<>(HILBERT, CANTOR));
         secondRound.add(pairing);
-        assertThatThrownBy(()->schedule.add(secondRound)).isInstanceOf(IllegalArgumentException.class).hasMessage(pairing + " already is in some Round in this schedule.");
+        assertThatThrownBy(() -> schedule.add(secondRound)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(pairing + " already is in some Round in this schedule.");
     }
 
     @Test
     void add_addsRound_ifEverythingIsOk() {
         // given
         Schedule<String> schedule = new Schedule<>();
-        
+
         // when
         Round<String> firstRound = new Round<>();
         firstRound.add(new Pairing<>(GAUSS, EULER));
@@ -54,5 +58,24 @@ class ScheduleTest {
 
         // then
         assertThat(schedule.getRounds()).containsExactly(firstRound, secondRound);
+    }
+
+    @Test
+    void getPairings_returnsAllPairingsInTheCorrectOrder() {
+        // given
+        Schedule<String> schedule = ScheduleTestData.createDefault();
+
+        // when
+        List<Pairing<String>> pairings = schedule.getPairings(RIEMANN);
+
+        // then
+        assertThat(pairings).isEqualTo(List.of(
+                new Pairing<>(RIEMANN, HILBERT),
+                new Pairing<>(GAUSS, RIEMANN),
+                new Pairing<>(WEIERSTRASS, RIEMANN),
+                new Pairing<>(RIEMANN, EULER),
+                new Pairing<>(CANTOR, RIEMANN)
+        ));
+
     }
 }
