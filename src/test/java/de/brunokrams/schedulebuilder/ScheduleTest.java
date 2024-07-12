@@ -26,8 +26,8 @@ class ScheduleTest {
     void add_fails_whenAnyPairingOfTheRoundIsAlreadyContainedInAnExistingRound() {
         // given
         Schedule<String> schedule = new Schedule<>();
-        Round<String> firstRound = new Round();
-        Pairing<String> pairing = new Pairing(EULER, GAUSS);
+        Round<String> firstRound = new Round<>();
+        Pairing<String> pairing = new Pairing<>(EULER, GAUSS);
         firstRound.add(pairing);
         firstRound.add(new Pairing<>(RIEMANN, WEIERSTRASS));
         schedule.add(firstRound);

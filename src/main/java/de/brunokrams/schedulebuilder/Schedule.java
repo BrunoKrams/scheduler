@@ -13,8 +13,8 @@ public class Schedule<T> {
         this.pairings = new HashSet<>();
     }
 
-    private List<Round<T>> rounds;
-    private Set<Pairing> pairings;
+    private final List<Round<T>> rounds;
+    private final Set<Pairing<T>> pairings;
 
     List<Round<T>> getRounds() {
         return Collections.unmodifiableList(rounds);

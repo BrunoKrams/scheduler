@@ -13,8 +13,8 @@ public class Round<T> {
         this.participants = new HashSet<>();
     }
 
-    private List<Pairing<T>> pairings;
-    private Set<T> participants;
+    private final List<Pairing<T>> pairings;
+    private final Set<T> participants;
 
     void add(Pairing<T> pairing) {
         if (pairing == null) {

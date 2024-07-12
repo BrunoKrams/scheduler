@@ -9,8 +9,8 @@ class PairingTest {
     @Test
     void constructor_throwsException_ifEitherArgumentIsNull() {
         // when/then
-        assertThatThrownBy(() -> new Pairing(null, "ABC")).isInstanceOf(IllegalArgumentException.class).hasMessage("None of the participants must be null.");
-        assertThatThrownBy(() -> new Pairing("ABC", null)).isInstanceOf(IllegalArgumentException.class).hasMessage("None of the participants must be null.");
+        assertThatThrownBy(() -> new Pairing<>(null, "ABC")).isInstanceOf(IllegalArgumentException.class).hasMessage("None of the participants must be null.");
+        assertThatThrownBy(() -> new Pairing<>("ABC", null)).isInstanceOf(IllegalArgumentException.class).hasMessage("None of the participants must be null.");
     }
     
     @Test
@@ -19,7 +19,7 @@ class PairingTest {
         String participant = "Carl Friedrich";
         
         // when
-        assertThatThrownBy(() -> new Pairing(participant, participant)).isInstanceOf(IllegalArgumentException.class).hasMessage("The participants must not be equal.");
+        assertThatThrownBy(() -> new Pairing<>(participant, participant)).isInstanceOf(IllegalArgumentException.class).hasMessage("The participants must not be equal.");
     }
     
 
