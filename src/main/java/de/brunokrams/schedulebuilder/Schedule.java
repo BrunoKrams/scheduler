@@ -1,10 +1,6 @@
 package de.brunokrams.schedulebuilder;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Schedule<T> {
 
@@ -16,7 +12,7 @@ public class Schedule<T> {
     private final List<Round<T>> rounds;
     private final Set<Pairing<T>> pairings;
 
-    public List<Pairing<T>> getPairings(T participant) {
+    List<Pairing<T>> getPairings(T participant) {
         return rounds.stream().flatMap(round -> round.getPairings().stream()).filter(pairing -> pairing.contains(participant))
                 .toList();
     }

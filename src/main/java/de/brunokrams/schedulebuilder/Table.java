@@ -1,11 +1,12 @@
 package de.brunokrams.schedulebuilder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Table<T> {
 
-    private final ArrayList<ArrayList<T>> tableImpl;
+    private final List<List<T>> tableImpl;
     private final int nrOfColumns;
 
     Table(List<T> participants) {
@@ -32,6 +33,10 @@ class Table<T> {
             set(i, 1, get(i - 1, 1));
         }
         set(0, 1, temp);
+    }
+
+    List<List<T>> getRows() {
+        return Collections.unmodifiableList(tableImpl);
     }
 
     T get(int row, int column) {
