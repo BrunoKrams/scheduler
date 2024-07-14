@@ -1,5 +1,6 @@
 package de.brunokrams.schedulebuilder;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -15,22 +16,20 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class SchedulerTest {
 
-    @ParameterizedTest
-    @ValueSource(classes = {TableScheduler.class, DfsScheduler.class})
-    void create_fails_whenNumberOfParticipantsIsNotEven(Class<? extends Scheduler<String>> clazz) throws InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
+    @Test
+    void create_fails_whenNumberOfParticipantsIsNotEven() throws InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
         // given
-        Scheduler<String> scheduler = clazz.getDeclaredConstructor().newInstance();
+        Scheduler<String> scheduler = new Scheduler<>();
 
         // when/then
         assertThatThrownBy(() -> scheduler.create(List.of(GAUSS, RIEMANN, EULER))).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Number of participants must be even.");
     }
 
-    @ParameterizedTest
-    @ValueSource(classes = {TableScheduler.class, DfsScheduler.class})
-    void eachParticipant_playsEachOtherExactlyOnce(Class<? extends Scheduler<String>> clazz) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    @Test
+    void eachParticipant_playsEachOtherExactlyOnce() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         // given
-        Scheduler<String> scheduler = clazz.getDeclaredConstructor().newInstance();
+        Scheduler<String> scheduler = new Scheduler<>();
 
         // when
         Schedule<String> schedule = scheduler.create(PARTICIPANTS);
