@@ -34,7 +34,7 @@ public class Round<T> {
         }
     }
 
-    List<Pairing<T>> getPairings() {
+    public List<Pairing<T>> getPairings() {
         return Collections.unmodifiableList(pairings);
     }
 }

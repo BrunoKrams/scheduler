@@ -17,7 +17,7 @@ public class Schedule<T> {
                 .toList();
     }
 
-    List<Round<T>> getRounds() {
+    public List<Round<T>> getRounds() {
         return Collections.unmodifiableList(rounds);
     }
 
