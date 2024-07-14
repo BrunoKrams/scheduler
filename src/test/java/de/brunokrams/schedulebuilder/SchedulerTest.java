@@ -7,10 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static de.brunokrams.schedulebuilder.CommonTestData.EULER;
-import static de.brunokrams.schedulebuilder.CommonTestData.GAUSS;
-import static de.brunokrams.schedulebuilder.CommonTestData.PARTICIPANTS;
-import static de.brunokrams.schedulebuilder.CommonTestData.RIEMANN;
+import static de.brunokrams.schedulebuilder.CommonTestData.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -19,7 +16,7 @@ class SchedulerTest {
     @Test
     void create_fails_whenNumberOfParticipantsIsNotEven() {
         // given
-        Scheduler<String> scheduler = new Scheduler<>();
+        Scheduler<String> scheduler = new TableScheduler<>();
 
         // when/then
         assertThatThrownBy(() -> scheduler.create(List.of(GAUSS, RIEMANN, EULER))).isInstanceOf(IllegalArgumentException.class)
@@ -29,7 +26,7 @@ class SchedulerTest {
     @Test
     void eachParticipant_playsEachOtherExactlyOnce() {
         // given
-        Scheduler<String> scheduler = new Scheduler<>();
+        Scheduler<String> scheduler = new TableScheduler<>();
 
         // when
         Schedule<String> schedule = scheduler.create(PARTICIPANTS);
