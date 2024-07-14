@@ -10,17 +10,6 @@ import static de.brunokrams.schedulebuilder.CommonTestData.RIEMANN;
 import static de.brunokrams.schedulebuilder.CommonTestData.WEIERSTRASS;
 
 public class ScheduleTestData {
-
-//    public static final String GAUSS = "Carl Friedrich";
-//    public static final String RIEMANN = "Bernhard";
-//    public static final String EULER = "Leonhard";
-//    public static final String CANTOR = "Georg";
-//    public static final String HILBERT = "David";
-//    public static final String WEIERSTRASS = "Karl";
-
-
-    
-
     
     public static Schedule<String> createDefault() {
         Round<String> first = new Round<>();

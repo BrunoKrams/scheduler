@@ -22,7 +22,7 @@ class SchedulerTest {
         Scheduler<String> scheduler = new Scheduler<>();
 
         // when/then
-        assertThatThrownBy(() -> scheduler.create(Set.of(GAUSS, RIEMANN, EULER))).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> scheduler.create(List.of(GAUSS, RIEMANN, EULER))).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Number of participants must be even.");
     }
 
