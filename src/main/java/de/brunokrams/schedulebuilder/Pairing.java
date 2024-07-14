@@ -3,7 +3,7 @@ package de.brunokrams.schedulebuilder;
 import java.util.Objects;
 import java.util.Set;
 
-class Pairing<T> {
+public class Pairing<T> {
 
     private final T firstParticipant;
     private final T secondParticipant;
