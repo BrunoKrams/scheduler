@@ -1,0 +1,1 @@
+A small tool to create a schedule for e.g. a sports league. It is an implementation of what is sometimes called the rotation method. At the moment it is restricted to an even number of participants. For an odd number just add a dummy.
